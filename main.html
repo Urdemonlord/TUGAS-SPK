@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    .header {
+      background-color: #4472C4;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+    .section {
+      background-color: #e6e6e6;
+      font-weight: bold;
+    }
+    .highlight {
+      background-color: #ffffcc;
+    }
+    .result {
+      background-color: #e2efda;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>Weighted Product Method Calculation</h2>
+  </div>
+  
+  <!-- Input Data -->
+  <h3>1. Input Data</h3>
+  <table>
+    <tr>
+      <th>Alternatif</th>
+      <th>C1 (Juta Rp)<br>Cost</th>
+      <th>C2 (%)<br>Benefit</th>
+      <th>C3<br>Benefit</th>
+      <th>C4<br>Benefit</th>
+      <th>C15<br>Benefit</th>
+    </tr>
+    <tr>
+      <td>A1</td>
+      <td>150</td>
+      <td>15</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>A2</td>
+      <td>500</td>
+      <td>200</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>A3</td>
+      <td>200</td>
+      <td>10</td>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>A4</td>
+      <td>350</td>
+      <td>100</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr class="section">
+      <td>BOBOT</td>
+      <td>5</td>
+      <td>3</td>
+      <td>2</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+  </table>
+  
+  <!-- Weight Normalization -->
+  <h3>2. Weight Normalization</h3>
+  <table>
+    <tr>
+      <th>Criteria</th>
+      <th>Weight</th>
+      <th>Total Weight</th>
+      <th>Normalized Weight</th>
+      <th>Type</th>
+    </tr>
+    <tr>
+      <td>C1</td>
+      <td>5</td>
+      <td rowspan="5">19</td>
+      <td>0.263</td>
+      <td>Cost (-)</td>
+    </tr>
+    <tr>
+      <td>C2</td>
+      <td>3</td>
+      <td>0.158</td>
+      <td>Benefit (+)</td>
+    </tr>
+    <tr>
+      <td>C3</td>
+      <td>2</td>
+      <td>0.105</td>
+      <td>Benefit (+)</td>
+    </tr>
+    <tr>
+      <td>C4</td>
+      <td>5</td>
+      <td>0.263</td>
+      <td>Benefit (+)</td>
+    </tr>
+    <tr>
+      <td>C15</td>
+      <td>4</td>
+      <td>0.211</td>
+      <td>Benefit (+)</td>
+    </tr>
+  </table>
+  
+  <!-- Vector S Calculation -->
+  <h3>3. Vector S Calculation</h3>
+  <table>
+    <tr>
+      <th>Alternative</th>
+      <th>C1^(-w1)</th>
+      <th>C2^(w2)</th>
+      <th>C3^(w3)</th>
+      <th>C4^(w4)</th>
+      <th>C15^(w5)</th>
+      <th>Vector S</th>
+    </tr>
+    <tr>
+      <td>A1</td>
+      <td>(150^-0.263) = 0.299</td>
+      <td>(15^0.158) = 1.453</td>
+      <td>(2^0.105) = 1.074</td>
+      <td>(2^0.263) = 1.278</td>
+      <td>(3^0.211) = 1.264</td>
+      <td class="highlight">0.691</td>
+    </tr>
+    <tr>
+      <td>A2</td>
+      <td>(500^-0.263) = 0.207</td>
+      <td>(200^0.158) = 2.414</td>
+      <td>(2^0.105) = 1.074</td>
+      <td>(3^0.263) = 1.346</td>
+      <td>(2^0.211) = 1.154</td>
+      <td class="highlight">0.954</td>
+    </tr>
+    <tr>
+      <td>A3</td>
+      <td>(200^-0.263) = 0.272</td>
+      <td>(10^0.158) = 1.320</td>
+      <td>(3^0.105) = 1.116</td>
+      <td>(1^0.263) = 1.000</td>
+      <td>(3^0.211) = 1.264</td>
+      <td class="highlight">0.507</td>
+    </tr>
+    <tr>
+      <td>A4</td>
+      <td>(350^-0.263) = 0.224</td>
+      <td>(100^0.158) = 1.978</td>
+      <td>(3^0.105) = 1.116</td>
+      <td>(1^0.263) = 1.000</td>
+      <td>(2^0.211) = 1.154</td>
+      <td class="highlight">0.575</td>
+    </tr>
+    <tr class="section">
+      <td colspan="6">Sum of Vector S</td>
+      <td>2.727</td>
+    </tr>
+  </table>
+  
+  <!-- Vector V Calculation and Ranking -->
+  <h3>4. Vector V Calculation and Ranking</h3>
+  <table>
+    <tr>
+      <th>Alternative</th>
+      <th>Vector S</th>
+      <th>Sum of Vector S</th>
+      <th>Vector V (S/Sum)</th>
+      <th>Rank</th>
+    </tr>
+    <tr>
+      <td>A1</td>
+      <td>0.691</td>
+      <td rowspan="4">2.727</td>
+      <td>0.253</td>
+      <td>2</td>
+    </tr>
+    <tr class="result">
+      <td>A2</td>
+      <td>0.954</td>
+      <td>0.350</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>A3</td>
+      <td>0.507</td>
+      <td>0.186</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>A4</td>
+      <td>0.575</td>
+      <td>0.211</td>
+      <td>3</td>
+    </tr>
+  </table>
+  
+  <!-- Final Result -->
+  <h3>5. Final Result</h3>
+  <table>
+    <tr>
+      <th>Rank</th>
+      <th>Alternative</th>
+      <th>Vector V Value</th>
+    </tr>
+    <tr class="result">
+      <td>1</td>
+      <td>A2</td>
+      <td>0.350</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>A1</td>
+      <td>0.253</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>A4</td>
+      <td>0.211</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>A3</td>
+      <td>0.186</td>
+    </tr>
+  </table>
+  
+  <!-- Conclusion -->
+  <div style="margin-top: 20px; padding: 10px; border: 2px solid #4472C4; background-color: #e2efda;">
+    <h3>Conclusion:</h3>
+    <p>Based on the Weighted Product method calculation, <strong>Alternative A2</strong> has the highest preference value (0.350) and is therefore the best choice among the alternatives.</p>
+  </div>
+</body>
+</html>
